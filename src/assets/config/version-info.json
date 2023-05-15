@@ -1,0 +1,17 @@
+{
+    "name": "evito-ui-site",
+    "version": "0.0.1",
+    "revision": "4",
+    "sha": "7b23dc7b6566e2b9e2d9005420c5697f35fcb6f9",
+    "author": "Valluvan M",
+    "angularVersion": "^9.1.1",
+    "angularCliVersion": "^9.1.1",
+    "userAgent": "npm/6.14.5 node/v12.16.1 linux x64",
+    "buildBy": "valluvan",
+    "buildTime": "Sunday, August 23 2020, 16:53:42 +05:30",
+    "copyright": "Copyright 2020 Acadyme",
+    "copyrighturl": "https://www.acadyme.in",
+    "poweredby": "Vyasaka",
+    "poweredbyurl": "https://www.vyasaka.in"
+  }
+  

@@ -1,0 +1,56 @@
+<div style="background: url('{{data.image}}'); margin-bottom: 0px; height: 300px;" *ngFor="let data of galleryList | slice:0:1" class="jumbotron bg-cover text-white">
+    <div class="container py-5 text-center">
+        <h2 class="display-4 font-weight-bold" style="color: white;">{{ data.title }}</h2>
+        <p class="font-italic mb-0">Using simple jumbotron-style component, create a nice Bootstrap 4 header with a background image.</p>
+        <p class="font-italic">Snippe by
+            <a href="https://bootstrapious.com" class="text-white">
+                <u>Bootstrapious</u>
+            </a>
+        </p>
+        <a href="#" role="button" class="btn btn-primary px-5">See All Features</a>
+    </div>
+</div>
+
+<section class="ftco-section">
+    <div class="container">
+      <div class="row no-gutters justify-content-center">
+        <div class="col-md-6">
+          <div class="wrapper">
+            <div class="contact-wrap w-100 p-md-5 p-4">
+                <h3>Login</h3>
+                <form  class="contactForm" [formGroup]="loginForm" >
+                    <div class="row">
+                        <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email"  formControlName="email" [ngClass]="{'is-invalid':submitted && f.email.errors}"/>
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">
+                                    email is required
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="password" class="form-control" formControlName="password" placeholder="Password*" [ngClass]="{'is-invalid':submitted && f.password.errors}"/>
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">
+                                password is required
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-12 mt-3">
+                        <div class="form-group">
+                            <a class="btn btn-primary" (click)="onSubmit(loginForm.value)" type="submit">Login</a>&nbsp;
+                            <a class="btn btn-primary" (click)="onRegNav($event)" class="btn btn-secondary">Register</a>
+                        </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

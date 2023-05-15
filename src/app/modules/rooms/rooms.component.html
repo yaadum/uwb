@@ -1,0 +1,173 @@
+<div class="" *ngFor="let data of serviceList;  let i = index">
+  <ng-container *ngIf="i < 1">
+    <section class="hero-wrap" style=" background-image: url({{data.imageUpload}});">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 pt-5 text-center">
+            <p class="breadcrumbs">
+              <span class="me-2"
+                ><a routerLink="/">Home <i class="fa fa-chevron-right"></i></a
+              ></span>
+              <span>Rooms <i class="fa fa-chevron-right"></i></span>
+            </p>
+            <h1 class="mb-0 bread">Cozzy Rooms</h1>
+          </div>
+        </div>
+    </div>
+  </section>
+  </ng-container>
+</div>
+<section class="ftco-section ftco-no-pb ftco-no-pt ftco-booking">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form action="#" class="booking-form">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg form-wrap d-flex py-3 py-lg-5 px-4">
+              <div class="form-group ps-4 border-0">
+                <label for="#">Check-In</label>
+                <div class="form-field">
+                  <div class="icon"><span class="fa fa-calendar"></span></div>
+                  <input
+                    type="text"
+                    class="form-control arrival_date datepicker-input"
+                    placeholder="Check-In Date"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg form-wrap d-flex py-3 py-lg-5 px-4">
+              <div class="form-group ps-4">
+                <label for="#">Check-Out</label>
+                <div class="form-field">
+                  <div class="icon"><span class="fa fa-calendar"></span></div>
+                  <input
+                    type="text"
+                    class="form-control departure_date datepicker-input"
+                    placeholder="Check-Out Date"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg form-wrap d-flex py-3 py-lg-5 px-4">
+              <div class="form-group ps-4">
+                <label for="#">Rooms</label>
+                <div class="form-field">
+                  <div class="select-wrap">
+                    <div class="icon">
+                      <span class="fa fa-chevron-down"></span>
+                    </div>
+                    <select name="" id="" class="form-control">
+                      <option value="">Suite</option>
+                      <option value="">Family Room</option>
+                      <option value="">Classic Room</option>
+                      <option value="">Superior Room</option>
+                      <option value="">Luxury Room</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg form-wrap d-flex py-3 py-lg-5 px-4">
+              <div class="form-group ps-4">
+                <label for="#">Guests</label>
+                <div class="form-field">
+                  <div class="select-wrap">
+                    <div class="icon">
+                      <span class="fa fa-chevron-down"></span>
+                    </div>
+                    <select name="" id="" class="form-control">
+                      <option value="">1 Person</option>
+                      <option value="">2 Person</option>
+                      <option value="">3 Person</option>
+                      <option value="">4 Person</option>
+                      <option value="">5 Person</option>
+                      <option value="">6-9 Person</option>
+                      <option value="">10+ Person</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 col-lg d-flex">
+              <div class="form-group d-flex border-0">
+                <div class="form-field w-100 align-items-center d-flex">
+                  <a
+                    href="#"
+                    type="submit"
+                    class="d-flex justify-content-center align-items-center align-self-stretch form-control btn btn-primary py-lg-4 py-xl-0"
+                    ><span>Check Availability</span></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="ftco-section bg-light">
+  <div class="container-xl">
+    <div class="row justify-content-center">
+      <div
+        class="col-md-8 heading-section text-center mb-5 aos-init aos-animate"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
+        <span class="subheading">Our Rooms</span>
+        <h2 class="mb-4">Hotel Rooms</h2>
+      </div>
+    </div>
+    <div class="row ">
+      <div
+        class="col-md-6 col-lg-4 d-flex align-items-stretch aos-init aos-animate"
+        data-aos="flip-left"
+        data-aos-delay="100"
+        data-aos-duration="1000" *ngFor="let item of productData" >
+        <div class="room-wrap ">
+          <a class="img img-room" *ngIf="item.image[0].imagePath" style=" background-image: url({{item.image[0].imagePath}});"></a>
+          <a class="img img-room" *ngIf="!item.image[0].imagePath" style=" background-image: url({{item.image}});"></a>
+          <div class="text p-5 text-center">
+            <h3> <a> {{item.itemName}} </a> </h3>
+            <p innerHtml="{{item.description}}"></p>
+            <p class="mb-0 mt-2">
+              <span class="me-3 price">{{item.price | currency:'INR'}}</span
+              ><a href="#" class="btn-custom">Book Now</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="ftco-section">
+    <div class="container-xl">
+      <div class="row justify-content-center">
+        <div
+          class="col-md-8 heading-section text-center mb-5 aos-init aos-animate"
+          data-aos="fade-up"
+          data-aos-duration="1000" *ngFor="let service of serviceList | slice:0:1"
+        >
+          <span class="subheading">Unwind Services</span>
+          <h2 class="mb-4">{{service.category}}</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div
+          class="col-md-3 col-xl-2 text-center d-flex align-items-stretch aos-init aos-animate"
+          data-aos="fade-up"
+          data-aos-delay="100"
+          data-aos-duration="1000" *ngFor="let service of serviceList"
+        >
+          <a href="#" class="services">
+            <div class="icon"><span > <img [src]="service.imageUpload" width="100px" alt=""></span></div>
+            <div class="text">
+              <h2>{{service.title}}</h2>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>

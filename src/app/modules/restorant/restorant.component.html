@@ -1,0 +1,117 @@
+<ng-container *ngFor="let data of serviceList | slice: 3:4">
+  <section
+    class="hero-wrap hero-wrap-2"
+    style="background-image: url({{data.imageUpload}})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div
+        class="row no-gutters slider-text align-items-center justify-content-center"
+      >
+        <div class="col-md-9 pt-5 text-center">
+          <div class="col-md-9 pt-5 text-center">
+            <p class="breadcrumbs">
+              <span class="me-2"
+                ><a routerLink="/">Home <i class="fa fa-chevron-right"></i></a
+              ></span>
+              <span>Resto &amp; Bar <i class="fa fa-chevron-right"></i></span>
+            </p>
+            <h1 class="mb-0 bread">Restaurant &amp; Bar</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>
+<section class="ftco-section">
+  <div class="container-fluid">
+    <div class="row justify-content-center pb-4">
+      <div class="col-md-7 text-center heading-section aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000">
+        <span class="subheading">Resto &amp; Bar</span>
+        <h2 class="mb-3">Restaurant &amp; Bar</h2>
+      </div>
+    </div>
+    <div class="row g-md-5">
+      <div class="col-md-12 col-xl-5 d-flex align-items-stretch" *ngFor="let firstGal of serviceList; let i=index">
+        <ng-container *ngIf="i == 4">
+          <div class="img w-100 img-cuisine aos-init aos-animate" style="background-image: url({{firstGal.imageUpload}});" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+            <div class="icon d-flex align-items-center justify-content-center">
+              <span class="flaticon-cooking"></span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="col-md-12 col-xl-7 ps-xl-5">
+        <div class="row g-md-2">
+          <div class="col-md-6" *ngFor="let content of productData; let i= index">
+            <div class="pricing-entry d-flex align-items-center aos-init aos-animate" data-aos="fade-up"
+              data-aos-delay="500"
+              data-aos-duration="1000" *ngIf="i<12">
+              <div class="img" *ngIf="content.image[0].imagePath" style="background-image: url({{content.image[0].imagePath}})"></div>
+              <div class="img" *ngIf="!content.image[0].imagePath" style="background-image: url({{content.image}})"></div>
+              <div class="icon d-flex align-items-center justify-content-center">
+              </div>
+              <div class="desc ps-3">
+                <div class="d-flex text">
+                  <h3><span>{{content.itemName}}</span></h3>
+                  <span class="price">{{content.price | currency:'INR'}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <section class="ftco-section">
+  <div class="container-fluid">
+    <div class="row justify-content-center pb-4">
+      <div class="col-md-7 text-center heading-section aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000">
+        <span class="subheading">Resto &amp; Bar</span>
+        <h2 class="mb-3">Restaurant &amp; Bar</h2>
+      </div>
+    </div>
+    <div class="row g-md-5">
+      <div class="col-md-12 col-xl-5 d-flex align-items-stretch" *ngFor="let firstGal of serviceList; let i=index">
+        <ng-container *ngIf="i == 4">
+          <div class="img w-100 img-cuisine aos-init aos-animate" style="background-image: url({{firstGal.imageUpload}});" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+            <div class="icon d-flex align-items-center justify-content-center">
+              <span class="flaticon-graduation-hat"></span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="col-md-12 col-xl-7 ps-xl-5">
+        <div class="row g-md-2">
+          <div class="col-md-6" *ngFor="let content of productData">
+            <div class="pricing-entry d-flex align-items-center aos-init aos-animate" data-aos="fade-up"
+              data-aos-delay="500"
+              data-aos-duration="1000" >
+              <div class="img" *ngIf="content.image[0].imagePath" style="background-image: url({{content.image[0].imagePath}})"></div>
+              <div class="img" *ngIf="!content.image[0].imagePath" style="background-image: url({{content.image}})"></div>
+              <div class="desc ps-3">
+                <div class="d-flex text">
+                  <h3><span>{{content.itemName}}</span></h3>
+                  <span class="price">{{content.price | currency:'INR'}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<section class="ftco-gallery">
+  <div class="container-fluid">
+    <div class="row g-3" >
+      <div class="col-md aos-init aos-animate" *ngFor="let images of galleryList" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+        <a href="{{images.imageUpload}}" class="gallery-wrap img d-flex align-items-center justify-content-center glightbox"style="background-image: url({{images.image}})">
+          <div class="icon d-flex align-items-center justify-content-center">
+            <span class="fa fa-search"></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

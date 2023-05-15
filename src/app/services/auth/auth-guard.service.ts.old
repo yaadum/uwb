@@ -1,0 +1,111 @@
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
+
+import { AclRepo } from '../acl-repo.store';
+import { AppConfigStore } from '../app-config.store';
+import { SessionStore } from '../session.store';
+
+@Injectable()
+export class AuthGuardService implements CanActivate, CanActivateChild {
+  redirectCounterMax: number = 3;
+  unauthorizedRedirectCounter: number = 0;
+
+  loginPortalUrl: string = AppConfigStore.getValue('portal', 'loginPortal');
+
+  constructor(private router: Router) {}
+
+  // @ts-ignore TS6133
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const isLoggedIn = SessionStore.isUserLoggedIn();
+    console.log('AuthGuard.canActivate:: isUserLoggedIn: ' + isLoggedIn);
+
+    if (!isLoggedIn) {
+      window.location.href = this.loginPortalUrl;
+      return true;
+    }
+
+    // user logged-in
+    const currentUserRole: string = SessionStore.getUserRole();
+    const allowedPath: Array<string> = AclRepo.getPathAcl(currentUserRole);
+
+    // if ( allowedPath === undefined || allowedPath.length ===0 || (!allowedPath.includes(currentPath))  ) {
+    if (!this.validatePathAcl(allowedPath, state.url)) {
+      // role not authorised so redirect to unauthorized page
+      console.log('Your are not authorised to access this page', currentUserRole);
+      if (
+        route.data.unauthorizedRedirectPath !== undefined &&
+        route.data.unauthorizedRedirectPath.length > 0 &&
+        this.unauthorizedRedirectCounter < this.redirectCounterMax
+      ) {
+        this.router.navigate([route.data.unauthorizedRedirectPath]);
+      } else {
+        this.router.navigate(['/unauthorized']);
+      }
+      return false;
+    }
+
+    this.unauthorizedRedirectCounter = 0;
+    return true;
+  }
+
+  private validatePathAcl(allowedPath: Array<string>, reqPath: string): boolean {
+    if (allowedPath === undefined) {
+      this.unauthorizedRedirectCounter += 1;
+      return false;
+    }
+    if (allowedPath.length === 0) {
+      this.unauthorizedRedirectCounter += 1;
+      return false;
+    }
+
+    if (allowedPath.length === 1 && allowedPath.includes(AclRepo.PATH_WILD_CARD)) {
+      return true;
+    }
+
+    reqPath = reqPath.replace(/\//gi, '_');
+    reqPath = reqPath.toUpperCase();
+    reqPath = AclRepo.PATH_PREFIX + reqPath;
+
+    if (allowedPath.includes(reqPath)) {
+      return true;
+    }
+
+    this.unauthorizedRedirectCounter += 1;
+    return false;
+  }
+
+  // @ts-ignore TS6133
+  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const isLoggedIn = SessionStore.isUserLoggedIn();
+    console.log('AuthGuard.canActivateChild:: isUserLoggedIn: ' + isLoggedIn);
+
+    if (!isLoggedIn) {
+      window.location.href = this.loginPortalUrl;
+      return true;
+    }
+
+    // user logged-in
+    const currentUserRole: string = SessionStore.getUserRole();
+    const allowedPath: Array<string> = AclRepo.getPathAcl(currentUserRole);
+
+    // if (allowedRoles === undefined || (allowedRoles && !allowedRoles.includes(currentUserRole))) {
+    if (!this.validatePathAcl(allowedPath, state.url)) {
+      // role not authorised so redirect to unauthorized page
+      console.log('Your are not authorised to access this page', currentUserRole);
+
+      if (
+        childRoute.data.unauthorizedRedirectPath !== undefined &&
+        childRoute.data.unauthorizedRedirectPath.length > 0 &&
+        this.unauthorizedRedirectCounter < this.redirectCounterMax
+      ) {
+        this.router.navigate([childRoute.data.unauthorizedRedirectPath]);
+      } else {
+        this.router.navigate(['/unauthorized']);
+      }
+      return false;
+    }
+
+    this.unauthorizedRedirectCounter = 0;
+    return true;
+  }
+}

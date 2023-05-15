@@ -1,0 +1,33 @@
+<!--
+* Copyright (c) 2020 Vyasaka Technologies. All Rights Reserved.
+-->
+
+<!--<form (ngSubmit)="onConfirm()" *ngIf="active">-->
+<form [formGroup]="myForm" *ngIf="active">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">
+      {{ title }}
+    </h4>
+    <button
+      type="button"
+      class="close pull-right"
+      (click)="hideConfirmationModal()"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>{{ body }}</p>
+  </div>
+  <div class="modal-footer">
+    <div class="text-right">
+      <button type="submit" class="btn btn-success" (click)="onConfirm()">
+        Save
+      </button>
+      <button type="button" class="btn btn-default" (click)="onCancel()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>

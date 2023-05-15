@@ -1,0 +1,26 @@
+{
+    "config": {
+      "common": {
+        "appLogo": "./assets/images/inevito-logo.jpg",
+        "appName": "Evito Web"
+      },
+      "secret": {
+        "razor_key_id": "rzp_test_lx0KzNx82aChqT",
+        "pusher_key": "1e9044b758b89cfef159",
+        "google_api_key": "AIzaSyA16T5c9_z7J1ZTolkvfArybDGXpXutkqE"
+      },
+      "portal": {
+        "loginPortal": "https://login.inevito.com"
+      },
+      "apiConfig": {
+        "apiUrl": "https://apin.inevito.com/business",
+        "clientTimeout": 300000
+      },
+      "settings": {
+        "pagination": 25,
+        "currency": "INR",
+        "timeFormat": "hh:mm:ss",
+        "dateFormat": "dd-mm-yyyy"
+      }
+    }
+  }

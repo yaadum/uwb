@@ -1,0 +1,112 @@
+{
+    "acls": {
+      "permissionAcls": {
+        "OWNER": [],
+        "ADMIN": [],
+        "PRINCIPAL": [],
+        "TEACHER": [],
+        "STUDENT": [],
+        "PARENT": []
+      },
+      "pathAcls": {
+        "SUPER_ADMIN": ["**"],
+        "OWNER": [
+          "PORTAL_PATH__DASHBOARD",
+          "PORTAL_PATH__DASHBOARD_DEFAULT",
+          "PORTAL_PATH__APPLICATION",
+          "PORTAL_PATH__UNDER-DEV"
+        ],
+        "ADMIN": [
+          "PORTAL_PATH__DASHBOARD",
+          "PORTAL_PATH__DASHBOARD_DEFAULT",
+          "PORTAL_PATH__APPLICATION",
+          "PORTAL_PATH__SYNC-UPDATE",
+          "PORTAL_PATH__DOCUMENT",
+          "PORTAL_PATH__DOCUMENT_LIST",
+          "PORTAL_PATH__DOCUMENT_VIEW",
+          "PORTAL_PATH__DOCUMENT_ADD",
+          "PORTAL_PATH__CIRCULAR",
+          "PORTAL_PATH__CIRCULAR_LIST",
+          "PORTAL_PATH__CIRCULAR_VIEW",
+          "PORTAL_PATH__CIRCULAR_ADD",
+          "PORTAL_PATH__CIRCULAR_EDIT",
+          "PORTAL_PATH__GALLERY",
+          "PORTAL_PATH__GALLERY_ADD",
+          "PORTAL_PATH__GALLERY_EDIT",
+          "PORTAL_PATH__GALLERY_VIEW",
+          "PORTAL_PATH__GALLERY_LIST",
+          "PORTAL_PATH__BLOG",
+          "PORTAL_PATH__BLOG_LIST",
+          "PORTAL_PATH__BLOG_VIEW",
+          "PORTAL_PATH__BLOG_ADD",
+          "PORTAL_PATH__BLOG_EDIT",
+          "PORTAL_PATH__EVENT",
+          "PORTAL_PATH__EVENT_LIST",
+          "PORTAL_PATH__EVENT_VIEW",
+          "PORTAL_PATH__EVENT_ADD",
+          "PORTAL_PATH__EVENT_EDIT",
+          "PORTAL_PATH__DOCUMENT",
+          "PORTAL_PATH__DOCUMENT_LIST",
+          "PORTAL_PATH__DOCUMENT_VIEW",
+          "PORTAL_PATH__DOCUMENT_EDIT",
+          "PORTAL_PATH__DOCUMENT_ADD",
+          "PORTAL_PATH__DOCUMENT_EDIT",
+          "PORTAL_PATH__DOCUMENT_DOCUMENT-MASTER",
+          "PORTAL_PATH__SERVICES",
+          "PORTAL_PATH__SERVICES_LIST",
+          "PORTAL_PATH__SERVICES_VIEW",
+          "PORTAL_PATH__SERVICES_ADD",
+          "PORTAL_PATH__SERVICES_EDIT",
+          "PORTAL_PATH__MASTER",
+          "PORTAL_PATH__MASTER_MASTER-LIST",
+          "PORTAL_PATH__MASTER_MASTER-MENU",
+          "PORTAL_PATH__UNDER-DEV"
+        ],
+        "PRINCIPAL": [
+          "PORTAL_PATH__DASHBOARD",
+          "PORTAL_PATH__DASHBOARD_DEFAULT",
+          "PORTAL_PATH__APPLICATION",
+          "PORTAL_PATH__UNDER-DEV"
+        ],
+        "TEACHER": [
+          "PORTAL_PATH__DASHBOARD",
+          "PORTAL_PATH__DASHBOARD_DEFAULT",
+          "PORTAL_PATH__APPLICATION",
+          "PORTAL_PATH__DOCUMENT",
+          "PORTAL_PATH__DOCUMENT_LIST",
+          "PORTAL_PATH__DOCUMENT_VIEW",
+          "PORTAL_PATH__DOCUMENT_ADD",
+          "PORTAL_PATH__CIRCULAR",
+          "PORTAL_PATH__CIRCULAR_LIST",
+          "PORTAL_PATH__CIRCULAR_VIEW",
+          "PORTAL_PATH__CIRCULAR_ADD",
+          "PORTAL_PATH__BLOG",
+          "PORTAL_PATH__BLOG_LIST",
+          "PORTAL_PATH__BLOG_VIEW",
+          "PORTAL_PATH__BLOG_ADD",
+          "PORTAL_PATH__EVENT",
+          "PORTAL_PATH__EVENT_LIST",
+          "PORTAL_PATH__EVENT_VIEW",
+          "PORTAL_PATH__EVENT_ADD",
+          "PORTAL_PATH__SERVICES",
+          "PORTAL_PATH__SERVICES_LIST",
+          "PORTAL_PATH__SERVICES_VIEW",
+          "PORTAL_PATH__SERVICES_ADD",
+          "PORTAL_PATH__UNDER-DEV"
+        ],
+        "STUDENT": [
+          "PORTAL_PATH__DASHBOARD",
+          "PORTAL_PATH__DASHBOARD_DEFAULT",
+          "PORTAL_PATH__APPLICATION",
+          "PORTAL_PATH__UNDER-DEV"
+        ],
+        "PARENT": [
+          "PORTAL_PATH__DASHBOARD",
+          "PORTAL_PATH__DASHBOARD_DEFAULT",
+          "PORTAL_PATH__APPLICATION",
+          "PORTAL_PATH__UNDER-DEV"
+        ]
+      }
+    }
+  }
+  

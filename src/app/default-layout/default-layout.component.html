@@ -1,0 +1,156 @@
+<nav class="navbar navbar-expand-lg ftco-navbar-light">
+    <div class="container">
+      <a href="" class="navbar-brand align-items-center" (click)="onHomeNav($event)" routerLinkActive="active">
+        <span class=""><img class="awesome" src="{{ companyLogo }}" style="height: 45px; width: 60px;"/></span>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="fa fa-bars"></span> Menu
+      </button>
+      <div class="navbar-collapse collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="" (click)="onHomeNav($event)" routerLinkActive="active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" (click)="onAboutNav($event)" routerLinkActive="active">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" (click)="onRoomNav($event)" routerLinkActive="active">Rooms</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" (click)="onRestorantNav($event)" routerLinkActive="active">Resto &amp; Bar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" (click)="onBlogsNav($event)" routerLinkActive="active">Blog</a>
+          <li class="nav-item">
+            <a class="nav-link" href="" (click)="onContactNav($event)" routerLinkActive="active">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" (click)="onCartNav($event)" routerLinkActive="active">Cart</a>
+          </li>
+        </ul>
+        <ul class=" navbar-nav ms-auto mb-2 mb-lg-0" >
+          <!-- navigation menu -->
+          <li class="nav-item" *ngIf="!user">
+            <a class="nav-link" href="" (click)="onLoginNav($event)" routerLinkActive="active">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="user">
+            <a class="nav-link" href="" (click)="logOut()">{{this.username}}<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+              Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--  -->
+
+
+  <router-outlet></router-outlet>
+  
+  <footer class="ftco-footer">
+    <div class="container-xl">
+      <div class="row mb-5 pb-5 ">
+        <div class="col-md-4 col-lg">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2 logo d-flex">
+              <a class="navbar-brand align-items-center" (click)="onHomeNav($event)" routerLinkActive="active">
+                <img src="{{ companyLogo }}" style="height: 120px" alt="" />
+              </a>
+            </h2>
+            <p innerHtml="{{ aboutUs}}"></p>
+            <ul class="ftco-footer-social list-unstyled mt-2">
+              <li>
+                <a href="#"><span class="fa fa-twitter"></span></a>
+              </li>
+              <li>
+                <a href="#"><span class="fa fa-facebook"></span></a>
+              </li>
+              <li>
+                <a href="#"><span class="fa fa-instagram"></span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+       
+        <div class="col-md-4 col-lg mx-4">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Quick Links</h2>
+            <ul class="list-unstyled">
+              <li>
+                <a href="" (click)="onHomeNav($event)" routerLinkActive="active"
+                  ><span class="fa fa-chevron-right me-2"></span>Home</a
+                >
+              </li>
+              <li>
+                <a href="" (click)="onAboutNav($event)" routerLinkActive="active"
+                  ><span class="fa fa-chevron-right me-2"></span>About</a
+                >
+              </li>
+              <li>
+                <a href="" (click)="onRoomNav($event)" routerLinkActive="active"
+                  ><span class="fa fa-chevron-right me-2"></span>Rooms</a
+                >
+              </li>
+              <li>
+                <a href="" (click)="onRestorantNav($event)" routerLinkActive="active"
+                  ><span class="fa fa-chevron-right me-2"></span>Resto &amp;
+                  Bar</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg mx-4">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Have a Questions?</h2>
+            <div class="block-23 mb-3">
+              <ul>
+                <li>
+                  <span class="icon fa fa-map marker"></span
+                  ><span class="text"
+                    > {{ address }}</span
+                  >
+                </li>
+                <li>
+                  <a href="blog.html#"
+                    ><span class="icon fa fa-phone"></span
+                    ><span class="text"> {{ contactNo }}</span></a
+                  >
+                </li>
+                <li>
+                  <a href="blog.html#"
+                    ><span class="icon fa fa-paper-plane pr-4"></span
+                    ><span class="text"
+                      ><span class="__cf_email__" data-cfemail="85ecebe3eac5fceaf0f7e1eae8e4ecebabe6eae8"
+                        > {{ email }}</span
+                      ></span
+                    ></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid px-0 py-5 bg-darken">
+      <div class="container-xl">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p class="mb-0" style="color: rgba(255, 255, 255, 0.5); font-size: 13px" >
+              Copyright &copy; 2021 Vyasaka,Chennai - All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  

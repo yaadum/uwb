@@ -1,0 +1,19 @@
+{
+    "dbconfig": [
+      {
+        "dbName": "*",
+        "sync.url": "https://dbs.vyasaka.in",
+        "sync.option.filters": {
+          "gallery": { "name": "evito_filter/doctypefilter" },
+          "event": { "name": "evito_filter/doctypefilter" },
+          "services": { "name": "evito_filter/doctypefilter" },
+          "blog": { "name": "evito_filter/doctypefilter" },
+          "document": { "name": "evito_filter/doctypefilter" },
+          "document-master": { "name": "evito_filter/doctypefilter" },
+          "circular": { "name": "evito_filter/doctypefilter" },
+          "website-master": { "name": "evito_filter/doctypefilter" }
+        }
+      }
+    ]
+  }
+  

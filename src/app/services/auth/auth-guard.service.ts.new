@@ -1,0 +1,49 @@
+import { Injectable } from '@angular/core';
+import { CanActivate, CanActivateChild, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Subject } from 'rxjs-compat/Subject';
+
+import { AppConfigStore } from '../app-config.store';
+import { SessionStore } from '../session.store';
+
+@Injectable()
+export class AuthGuardService implements CanActivate, CanActivateChild {
+  loginPortalUrl: string = AppConfigStore.getValue('portal', 'loginPortal');
+
+  constructor(private router: Router) {}
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const isLoggedIn = SessionStore.isUserLoggedIn();
+    console.log('AuthGuard.canActivate:: isUserLoggedIn: ' + isLoggedIn);
+    if (isLoggedIn) {
+      const currentUserRole = SessionStore.getUserRole();
+      if (route.data.roles === undefined || (route.data.roles && !route.data.roles.includes(currentUserRole))) {
+        // role not authorised so redirect to unauthorized page
+        console.log('Your role is not authorised to access this page', currentUserRole);
+        this.router.navigate(['/unauthorized']);
+        return false;
+      }
+
+      return true;
+    } else {
+      window.location.href = this.loginPortalUrl;
+    }
+  }
+
+  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const isLoggedIn = SessionStore.isUserLoggedIn();
+    console.log('AuthGuard.canActivateChild:: isUserLoggedIn: ' + isLoggedIn);
+    if (isLoggedIn) {
+      const currentUserRole = SessionStore.getUserRole();
+      if (childRoute.data.roles === undefined || (childRoute.data.roles && !childRoute.data.roles.includes(currentUserRole))) {
+        // role not authorised so redirect to unauthorized page
+        console.log('Your role is not authorised to access this page', currentUserRole);
+        this.router.navigate(['/unauthorized']);
+        return false;
+      }
+
+      return true;
+    } else {
+      window.location.href = this.loginPortalUrl;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+<ng-container *ngFor="let data of galleryList | slice: 0:1">
+  <section
+    class="hero-wrap hero-wrap-2"
+    style="background-image: url({{data.image}})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div
+        class="row no-gutters slider-text align-items-center justify-content-center"
+      >
+      <div class="col-md-9 pt-5 text-center">
+        <p class="breadcrumbs">
+          <span class="me-2">
+            <a href="" (click)="onBlogNav($event)" routerLinkActive="active">Home <i class="fa fa-chevron-right"></i></a>
+          </span>
+          <span>Blogs <i class="fa fa-chevron-right"></i></span>
+        </p>
+        <h1 class="mb-0 bread">Our Blog</h1>
+      </div>
+      </div>
+    </div>
+  </section>
+</ng-container>
+<section class="ftco-section bg-light">
+  <div class="container-xl">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 d-flex" *ngFor="let items of blogList">
+        <div
+          class="blog-entry justify-content-end aos-init aos-animate"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="100"
+        >
+          <a
+            class="block-20 img d-flex align-items-end"
+            style="background-image: url({{items.imageUpload}})"
+          >
+          </a>
+          <div class="text">
+            <p class="meta">
+              <span>{{items.createdOn | date:'MMM d, y'}}</span
+              ><a href="#">Learn more</a>
+            </p>
+            <h3 class="heading mb-3">
+              <a href="#">{{items.title}}</a>
+            </h3>
+            <p>{{items.shortDescription | slice: 0:100}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col text-center">
+        <div class="block-27">
+          <ul>
+            <li><a href="#">&lt;</a></li>
+            <li class="active"><span>1</span></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&gt;</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

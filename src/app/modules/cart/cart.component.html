@@ -1,0 +1,206 @@
+<div class="custom-padding"></div>
+<div style="background: url('{{data.image}}'); margin-bottom: 0px; height: 300px;" *ngFor="let data of bannerList | slice:0:1" class="jumbotron bg-cover text-white">
+    <div class="container py-5 text-center">
+        <h2 class="display-4 font-weight-bold" style="color: white;">{{ data.title }}</h2>
+    </div>
+</div>
+<div class="container">
+    <div class="col-md-12 pt-5">
+        <p class="breadcrumbs">
+        <span class="me-2">
+            <a href="" (click)="onHomeNav($event)" routerLinkActive="active">Home <i class="fa fa-chevron-right"></i></a>
+        </span>
+        <span>Cart <i class="fa fa-chevron-right"></i></span>
+        </p>
+    </div>
+</div>
+
+ <!-- <section id="cart-view" class="mb-5">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="cart-view-area">
+           <div class="cart-view-table">
+               <div class="table-responsive">
+                <form action="">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th></th>
+                          <th >Product</th>
+                          <th class="text-center">Price</th>
+                          <th class="text-center">Quantity</th>
+                          <th class="text-center">Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let data of dataArray" >
+                          <td><a class="remove"><i class="fa fa-close"  (click)="onDelete(data.itemCode)" ></i></a></td>
+                          <td>
+                            <div *ngIf="!data.image[0].imagePath">
+                              <img class="img-custom" src="{{data.image[0]}}" *ngIf="data.image[0] !== ''">
+                            </div>
+                            <div *ngIf="data.image[0].imagePath">
+                              <img class="img-custom" src="{{data.image[0].imagePath}}">
+                            </div>
+                          </td>
+                          <td>
+                              <a class="aa-cart-title text-center" href="#">{{ data.itemName }}</a>
+                          </td>
+                          <td class="text-center">{{ data.price | currency:'INR' }}</td>
+                          <td class="text-center">
+                            <button type="button" class="btn btn-primary btn-number " (click)="increment(data.quantity,data.itemCode)" data-type="plus" >
+                              <i class="fa fa-plus"></i>
+                            </button>
+                            <input type="text" name="quant[1]" class="input-number col-md-2"  data-min="1" data-max="100" value="{{ data.quantity}}">
+                            <button type="button" class="btn btn-primary btn-number "  (click)="decrement(data.quantity,data.itemCode)" data-type="minus" >
+                              <i class="fa fa-minus"></i>
+                            </button>
+                          </td>
+                          <td class="text-center">{{ data.price | currency:'INR' }}</td>
+                          
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+                </div>
+
+                <div class="d-flex justify-content-center mb-5 mt-3 ">
+                    <div class="">
+                        <h3 class="text-underline">Cart Totals</h3>
+                        <form action="" method="post" [formGroup]="checkoutForm">
+                            <table class="mb-2">
+                                <tbody>
+                                    <tr>
+                                        <div class="form-group">
+                                            <label class="col-form-label">Check In<span>*</span></label>
+                                            <input name="company_name" [min]="todayDate" class="form-control" formControlName="checkIn"  type="date" placeholder="">
+                                        </div>	
+                                    </tr>
+                                    <tr>
+                                        <div class="form-group">
+                                            <label class="col-form-label">Check Out<span>*</span></label>
+                                            <input name="company_name" [min]="todayDate" class="form-control" formControlName="checkOut"  type="date" placeholder="">
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <th>Subtotal</th> &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <td>{{ totalAmount | currency:'INR'  }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total</th>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <td>{{ total | currency:'INR'  }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="" *ngIf="showRazorPay" (click)="onFormSubmit(checkoutForm.value)"  class="btn btn-out btn-primary btn-main" data-abc="true"> Proced to Checkout </a> 
+                            <div #paypal></div>
+                            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                        </form>
+                    </div>
+                </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section> -->
+
+ <div class="container-fluid">
+  <div class="row">
+      <aside class="col-md-9">
+          <div class="card"  style="margin-bottom: 15px;">
+              <div class="table-responsive">
+                  <table class="table table-borderless table-shopping-cart">
+                      <thead class="text-muted">
+                          <tr class="small text-uppercase" style="color: lightseagreen;">
+                              <th scope="col">Product</th>
+                              <th scope="col" width="120">Quantity</th>
+                              <th scope="col" width="120">Price</th>
+                              <th scope="col" class="text-right d-none d-md-block" width="200">Delete</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let data of dataArray" >
+                              <td>
+                                  <figure class="itemside align-items-center">
+                                      <div class="aside" *ngIf="data.image[0].imagePath"><img src="{{data.image[0].imagePath}}"   class="img-sm"></div>
+                                      <div class="aside" *ngIf="!data.image[0].imagePath"><img src="{{data.image}}" class="img-sm"></div>
+                                  </figure>
+                              </td>
+                              <td>
+                                  <div class="button plus">
+                                    <button type="button" class="btn btn-primary btn-number" (click)="increment(data.quantity,data.itemCode)" data-type="plus" >
+                                      <i class="fa fa-plus"></i>
+                                    </button>
+                                  </div>
+                                  <input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="100" value="{{ data.quantity}}">
+                                  <div class="button minus">
+                                    <button type="button" class="btn btn-primary btn-number"  (click)="decrement(data.quantity,data.itemCode)" data-type="minus" >
+                                      <i class="fa fa-minus"></i>
+                                    </button>
+                                  </div>
+                                </td>
+                              <td>
+                                  <div class="price-wrap"> <var class="price">{{ data.price | currency: currency }}</var>
+                                      <!-- <small class="text-muted"> $9.20 each </small>  -->
+                                  </div>
+                              </td>
+                              <td class="text-right d-none d-md-block">
+                                   <!-- <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a>  -->
+                                   <a  (click)="onDelete(data.itemCode)" class="btn btn-light" data-abc="true"> Remove</a> </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </aside>
+      <aside class="col-md-3">
+          <!-- <div class="card mb-3">
+              <div class="card-body">
+                  <form>
+                      <div class="form-group"> <label>Have coupon?</label>
+                          <div class="input-group"> <input type="text" class="form-control coupon" name="" placeholder="Coupon code"> <span class="input-group-append"> <button class="btn btn-primary btn-apply coupon">Apply</button> </span> </div>
+                      </div>
+                  </form>
+              </div>
+          </div> -->
+          <div class="card"  style="margin-bottom: 15px;" >
+              <div class="card-body">
+                  <!-- <dl class="dlist-align">
+                      <dt>Total price:</dt>
+                      <dd class="text-right ml-3">{{ totalAmount | currency: currency }}</dd>
+                  </dl> -->
+                  <!-- <dl class="dlist-align">
+                      <dt>Discount:</dt>
+                      <dd class="text-right text-danger ml-3">- $10.00</dd>
+                  </dl> -->
+                  <form action="" method="post" [formGroup]="checkoutForm">
+                  <div>
+                      <div class="form-group">
+                          <label class="col-form-label">Check In<span>*</span></label>
+                          <input name="company_name" [min]="todayDate" class="form-control" formControlName="checkIn"  type="date" placeholder="">
+                      </div>	
+                  </div>
+                  <div>
+                      <div class="form-group">
+                          <label class="col-form-label">Check Out<span>*</span></label>
+                          <input name="company_name" [min]="todayDate" class="form-control" formControlName="checkOut"  type="date" placeholder="">
+                      </div>	
+                  </div>
+                  <dl class="dlist-align">
+                      <dt>Total:</dt>
+                      <dd class="text-right text-dark b ml-3"><strong>{{ totalAmount | currency: currency }}</strong></dd>
+                  </dl>
+                  <hr> 
+                  <a *ngIf="showRazorPay" (click)="onFormSubmit(checkoutForm.value)"  class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Book Now </a> 
+                  <!-- <a *ngIf="showPaypal" (click)="onFormSubmit1(checkoutForm.value)"  class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Buy Tickets </a>  -->
+                  <!-- <div #paypal></div> -->
+                  <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+              </form>
+              </div>
+          </div>
+      </aside>
+  </div>
+</div>
